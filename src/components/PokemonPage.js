@@ -12,13 +12,18 @@ function PokemonPage() {
     .then(response => response.json())
     .then(data => setPokemons(data))
   },[]);
+
+  function handleSearchPokemon(string){
+    const results = (pokemons.filter((pokemon)=> {return (pokemon.name === string)}))
+    setPokemons(results)
+  }
   return (
     <Container>
       <h1>Pokemon Searcher</h1>
       <br />
       <PokemonForm />
       <br />
-      <Search />
+      <Search onSearchPokemon={handleSearchPokemon}/>
       <br />
       <PokemonCollection pokemons={pokemons}/>
     </Container>
