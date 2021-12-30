@@ -5,7 +5,10 @@ function PokemonCard({pokemon}) {
   const[image,setImage]= useState(pokemon.sprites.front)
 
   function handleImage(){
-    setImage(pokemon.sprites.back)
+    if(image === pokemon.sprites.front)return setImage(pokemon.sprites.back)
+    else{
+      return setImage(pokemon.sprites.front)
+    }
   }
   return (
     <Card>
